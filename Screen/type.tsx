@@ -12,7 +12,7 @@ export type Province = {
     "EnglishType": string,
     "CountryID": "VN"
 }
-export const API_KEY = `HTe6qpKXnrHAGYdOIAS1Br7xGr3VgAfs`
+export const API_KEY = `npmOAJCfgLRF0mOGlScAqamNaAgkDaQV`
 
 export type DuBaoThoiTiet = {
     Headline: {
