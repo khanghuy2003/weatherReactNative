@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { useEffect, useState } from "react"
-import { ActivityIndicator, Image, ImageBackground, StyleSheet, Text, View } from "react-native"
+import { ActivityIndicator, Image, ImageBackground, ScrollView, StyleSheet, Text, Touchable, TouchableOpacity, View } from "react-native"
 import { API_KEY, DuBaoThoiTiet, RootStackParamList, weatherIcons } from "./type"
 
 type ViewWeatherProps = NativeStackScreenProps<RootStackParamList,"ViewWeather">
@@ -160,6 +160,15 @@ const ViewWeather = ({navigation , route} : ViewWeatherProps ) => {
             style={styles.container}
             resizeMode="cover"
         >
+            <ScrollView style={{flexGrow:1}}>
+            <View style={styles.container2}>
+                <View style={{justifyContent:'flex-start',borderWidth:0,width:'100%'}}>
+                    <TouchableOpacity onPress={()=>navigation.goBack()}>
+                        <Image 
+                            source={require('../picture/back.png')}
+                            style={{tintColor:'#ffffff',width:40,height:40}}/>
+                    </TouchableOpacity>
+                </View>
             {/* Tên thành phố */}
             <View style={{ alignItems: 'center', marginBottom: 10 }}>
                 <Text style={styles.cityName}>{LocalizedName}</Text>
@@ -281,12 +290,19 @@ const ViewWeather = ({navigation , route} : ViewWeatherProps ) => {
             </View>
 
             {error!=null ? <Text style={styles.errorText}>{error}</Text> : null}
+            </View>
+            </ScrollView>
         </ImageBackground>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    container2: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
